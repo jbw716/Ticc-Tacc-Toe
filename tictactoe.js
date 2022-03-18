@@ -69,17 +69,6 @@ function init() {
         container.appendChild(space.el);
     });
     registerEventListeners();
-
-
-
-
-
-
-
-
-
-    // const line = document.querySelector('span.line');
-    // line.style.width = Math.sqrt(2) * container.clientWidth - 10;
 }
 
 function registerEventListeners() {
@@ -112,6 +101,8 @@ function clearSpace(space) {
         space.el.removeChild(child);
         child = space.el.lastElementChild;
     }
+    space.symbol = null;
+    checkForWinner();
 }
 
 function fillSpace(space, val) {
@@ -122,6 +113,13 @@ function fillSpace(space, val) {
     space.el.appendChild(icon);
     sizeIcon(icon);
     console.log(checkForWinner() + ' wins!');
+}
+
+function clearWinnerLines() {
+    const winnerLines = container.querySelectorAll('span.line');
+    winnerLines.forEach(line => {
+        container.removeChild(line);
+    });
 }
 
 function checkForWinner() {
@@ -135,6 +133,13 @@ function checkForWinner() {
             ospaces.push(space.index);
         }
     });
+
+    clearWinnerLines();
+    const xwin = calcWin(xspaces);
+    const owin = calcWin(ospaces);
+    if (xwin && owin) {
+        return 'xo';
+    }
     if (calcWin(xspaces)) {
         return 'x';
     }
@@ -144,6 +149,7 @@ function checkForWinner() {
 }
 
 function calcWin(spacesToCheck) {
+    let anyWinner = false;
     for (const condition of winConditions) {
         const won = condition.criteria.every(val => spacesToCheck.includes(val));
         if (won) {
@@ -203,8 +209,8 @@ function calcWin(spacesToCheck) {
             };
 
             container.appendChild(winnerLine);
-            return true;
+            anyWinner = true;
         }
     }
-    return false;
+    return anyWinner;
 }
