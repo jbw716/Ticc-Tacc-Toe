@@ -1,8 +1,39 @@
-div.container {
-    position: relative;
-    display: flex;
+div.app {
     width: 100vmin;
     height: 100vmin;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+button.reset {
+    min-height: 3em;
+    width: 0px;
+    min-width: 10em;
+    margin: auto;
+    outline: none;
+    border: none;
+    border-radius: 0.5em;
+    background-color: dodgerblue;
+    color: white;
+    font-weight: bold;
+    text-shadow: -1px -1px 0 darkblue, 1px -1px 0 darkblue, -1px 1px 0 darkblue, 1px 1px 0 darkblue;
+    cursor: pointer;
+}
+
+button.reset:hover {
+    border: 2px mediumblue solid;
+}
+
+button.reset:active {
+    filter: brightness(50%);
+}
+
+div.container {
+    flex: 1 1 100%;
+    position: relative;
+    display: flex;
     margin: auto;
     flex-wrap: wrap;
     background-color: red;

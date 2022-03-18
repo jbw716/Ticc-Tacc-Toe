@@ -62,7 +62,8 @@ init();
 var container;
 
 function init() {
-    container = document.querySelector(".container");
+    container = document.querySelector("div.container");
+    container.style.width = container.offsetHeight;
     spaces.forEach(space => {
         space.el = document.createElement('div');
         space.el.classList.add('space');
@@ -82,6 +83,7 @@ function registerEventListeners() {
         space.el.addEventListener('dblclick', () => clearSpace(space));
     });
     window.addEventListener('resize', () => {
+        container.style.width = container.offsetHeight;
         spaces.forEach(space => {
             const icon = space.el.querySelector('i.icon');
             if (icon) {
