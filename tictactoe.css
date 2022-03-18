@@ -1,0 +1,40 @@
+div.container {
+    position: relative;
+    display: flex;
+    width: 100vmin;
+    height: 100vmin;
+    margin: auto;
+    flex-wrap: wrap;
+    background-color: red;
+    box-sizing: border-box;
+    border: 2px solid white;
+}
+
+div.container > div {
+    flex: 1 0 33%;
+    border: 2px solid black;
+    box-sizing: border-box;
+}
+
+span.line {
+    position: absolute;
+    z-index: 100;
+    transform: translate(-50%, -50%);
+    height: 10px;
+    background-color: green;
+    border: none;
+    top: 50%;
+    left: 50%;
+}
+
+div.space {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+i.icon {
+    position: absolute;
+    pointer-events: none;
+}
